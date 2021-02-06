@@ -1,7 +1,8 @@
 <?php
 /*
-GITHUB:
-
+GITHUB:https://github.com/Kanui-C
+TELEGRAM:@bdpwd
+DISCORD:!TheKanui#0105
 
 
 
