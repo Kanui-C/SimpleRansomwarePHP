@@ -4,4 +4,4 @@
 Metodo de uso: php ransomware.php DIRETORIO
 
 # Author: @Kanui-C
-!(https://images.prismic.io/horangiweb/589860da-55c4-4291-b8da-6ea9cc00f423_a-brief-history-of-ransomware-26sep2019-jp.jpg?auto=compress,format)
+![FOTO ILUSTRATIVA(NAO TEM NADA VER COM O SCRIPT](https://images.prismic.io/horangiweb/589860da-55c4-4291-b8da-6ea9cc00f423_a-brief-history-of-ransomware-26sep2019-jp.jpg?auto=compress,format)
